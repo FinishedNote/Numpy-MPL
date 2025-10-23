@@ -108,3 +108,50 @@ rng = np.random.default_rng(seed=654) # --> seed is used to reproduce the same s
 # print(rng.choice(ages[0]))
 # rng.shuffle(ages[0])
 # print(ages[0])
+
+# reshape
+
+a = np.arange(24)
+# b = a.reshape((2, 3, 4)).copy() # --> copy is used to don't change the view
+# print(b.base is a) # --> True = view, False = copy
+
+vector = np.arange(6)
+# vector_in_column = vector.reshape((-1, 1))
+# vector_in_column = vector[:, np.newaxis]
+# print(vector_in_column)
+
+# ravel
+
+matrix = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+])
+
+# matrix_in_vector = matrix.ravel()
+# print(matrix_in_vector)
+
+# transpose
+
+transposed_matrix = matrix.T
+# print(transposed_matrix)
+
+# splitting & stacking
+
+stack1 = np.array([[1, 2], [3, 4]])
+stack2 = np.array([[5, 6], [7, 8]])
+
+#hstack = np.hstack((stack1, stack2))
+# print(hstack)
+# vstack = np.vstack((stack1, stack2))
+# print(vstack)
+
+# matrix_splited = np.split(matrix, 3)
+# print(matrix_splited)
+
+# tiling & repeating
+
+v = np.arange(10)
+print(v)
+new = np.tile(v, (3, 4))
+print(new)

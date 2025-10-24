@@ -152,6 +152,14 @@ stack2 = np.array([[5, 6], [7, 8]])
 # tiling & repeating
 
 v = np.arange(10)
-print(v)
+# print(v)
 new = np.tile(v, (3, 4))
-print(new)
+# print(new)
+
+# masks
+
+arr = np.arange(11)
+print(arr)
+
+mask = arr[(arr > 5) | (arr == 2)]
+print(mask)

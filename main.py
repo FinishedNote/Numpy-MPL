@@ -29,6 +29,14 @@ zoom = gray_face[h//4 : -h//4, w//4 : -w//4] # zoom x2 ~ 1/4
 # zoom[zoom > 150] = 255
 # zoom[zoom < 150] = 0
 zoom = zoom[::2, ::2] # reduction in steps of 2
-plt.imshow(zoom, cmap="gray")
-plt.axis("off")
-plt.show()
+# plt.imshow(zoom, cmap="gray")
+# plt.axis("off")
+# plt.show()
+
+# average deviation
+
+np.random.seed(0)
+A = np.random.randint(0, 100, [10, 5]).astype(float)
+A = (A - A.mean(axis=0)) / A.std(axis=0)
+
+print(A)

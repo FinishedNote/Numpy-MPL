@@ -46,7 +46,7 @@ A = (A - A.mean(axis=0)) / A.std(axis=0) # or solution in b
 # mpl rnd exp
 
 dataset = {f"{i}": np.random.randn(100).astype(float) for i in range(4)}
-
+"""
 def graph(data):
     fig, ax = plt.subplots(4, 1,sharex=True, sharey=True)
     for k, j in data.items():
@@ -55,6 +55,18 @@ def graph(data):
         ax[int(k)].set_title(f"experience {int(k)+1}")
 
     plt.savefig("./images/graph.png")
+    plt.show()
+
+graph(dataset)
+"""
+
+n = len(dataset)
+def graph(data):
+    fig, ax = plt.subplots(4, 1,sharex=True, sharey=True)
+    for k, j in zip(data.keys(), range(0, n+1)):
+        ax[int(k)].plot(data[k])
+        ax[int(k)].set_title(f"experience {j+1}")
+
     plt.show()
 
 graph(dataset)

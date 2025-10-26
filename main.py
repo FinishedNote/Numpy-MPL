@@ -43,6 +43,8 @@ A = (A - A.mean(axis=0)) / A.std(axis=0) # or solution in b
 # print(A)
 # print(B)
 
+# mpl rnd exp
+
 dataset = {f"{i}": np.random.randn(100).astype(float) for i in range(4)}
 
 def graph(data):
@@ -52,7 +54,7 @@ def graph(data):
         ax[int(k)].plot(current_d)
         ax[int(k)].set_title(f"experience {int(k)+1}")
 
-
+    plt.savefig("./images/graph.png")
     plt.show()
 
 graph(dataset)

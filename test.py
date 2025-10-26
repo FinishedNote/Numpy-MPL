@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 # slicing
 
@@ -159,7 +160,36 @@ new = np.tile(v, (3, 4))
 # masks
 
 arr = np.arange(11)
-print(arr)
+# print(arr)
 
 mask = arr[(arr > 5) | (arr == 2)]
-print(mask)
+# print(mask)
+x = np.arange(5)
+y = np.arange(5)
+# plt.plot(x, y, c="green", lw=3)
+# plt.scatter(x, y, c="red", s=100)
+"""
+plt.figure(figsize=(12, 8))
+plt.plot(x, y**2, c="blue", label="data")
+plt.plot(x, y**3, c="red", label="other data")
+plt.title("Simple plot")
+plt.xlabel("axe x")
+plt.ylabel("axe y")
+plt.legend()
+# plt.savefig("plot.png")
+# plt.show() # after savefig because show() "erase"
+"""
+"""
+plt.figure()
+plt.subplot(2, 1, 1) # row, col, active graph
+plt.plot(x, y**2, c="blue", label="data")
+plt.legend()
+plt.xlabel("x")
+plt.ylabel("y")
+plt.subplot(2, 1, 2)
+plt.plot(x, y**3, c="red", label="data 2")
+plt.legend()
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+"""

@@ -37,6 +37,22 @@ zoom = zoom[::2, ::2] # reduction in steps of 2
 
 np.random.seed(0)
 A = np.random.randint(0, 100, [10, 5]).astype(float)
-A = (A - A.mean(axis=0)) / A.std(axis=0)
+B = A.copy()
+A = (A - A.mean(axis=0)) / A.std(axis=0) # or solution in b
+# B = (B - np.average(B, axis=0)) / B.std(axis=0)
+# print(A)
+# print(B)
 
-print(A)
+dataset = {f"{i}": np.random.randn(100).astype(float) for i in range(4)}
+
+def graph(data):
+    fig, ax = plt.subplots(4, 1,sharex=True, sharey=True)
+    for k, j in data.items():
+        current_d = data[k] = j
+        ax[int(k)].plot(current_d)
+        ax[int(k)].set_title(f"experience {int(k)+1}")
+
+
+    plt.show()
+
+graph(dataset)

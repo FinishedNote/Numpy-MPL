@@ -1,6 +1,8 @@
 import numpy as np
 import imageio.v3 as iio
 import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
 
 rdn_matrix = np.random.default_rng().uniform(low=0, high=100, size=(5, 5))
 vector = np.arange(80, 85)
@@ -57,7 +59,7 @@ def graph(data):
     plt.savefig("./images/graph.png")
     plt.show()
 
-graph(dataset)
+graph(datasets)
 """
 
 n = len(dataset)
@@ -69,4 +71,12 @@ def graph(data):
 
     plt.show()
 
-graph(dataset)
+# graph(datasets)
+
+# data visualisation with seaborn
+
+# datasets = sns.load_dataset("titanic") datasets pre integrated
+dataset = pd.read_excel("./datasets/titanic.xls") # we use pandas for local file
+dataset.head()
+sns.catplot(x="pclass", y="age", data=dataset, hue="sex")
+plt.show()

@@ -3,7 +3,9 @@ import imageio.v3 as iio
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from sklearn.linear_model import LinearRegression
 
+"""
 rdn_matrix = np.random.default_rng().uniform(low=0, high=100, size=(5, 5))
 vector = np.arange(80, 85)
 
@@ -31,9 +33,10 @@ zoom = gray_face[h//4 : -h//4, w//4 : -w//4] # zoom x2 ~ 1/4
 # zoom[zoom > 150] = 255
 # zoom[zoom < 150] = 0
 zoom = zoom[::2, ::2] # reduction in steps of 2
-# plt.imshow(zoom, cmap="gray")
-# plt.axis("off")
-# plt.show()
+plt.imshow(zoom, cmap="gray")
+plt.axis("off")
+plt.show()
+"""
 
 # average deviation
 
@@ -61,7 +64,7 @@ def graph(data):
 
 graph(datasets)
 """
-
+"""
 n = len(dataset)
 def graph(data):
     fig, ax = plt.subplots(4, 1,sharex=True, sharey=True)
@@ -71,12 +74,25 @@ def graph(data):
 
     plt.show()
 
-# graph(datasets)
-
+graph(datasets)
+"""
 # data visualisation with seaborn
 
 # datasets = sns.load_dataset("titanic") datasets pre integrated
-dataset = pd.read_excel("./datasets/titanic.xls") # we use pandas for local file
-dataset.head()
-sns.catplot(x="pclass", y="age", data=dataset, hue="sex")
+# dataset = pd.read_excel("./datasets/titanic.xls") # we use pandas for local file
+# sns.catplot(x="pclass", y="age", data=dataset, hue="sex")
+# plt.show()
+
+# linear regression machine learning
+
+np.random.seed(0)
+m = 100
+X = np.linspace(0, 10, m).reshape(m, 1)
+y = X + np.random.randn(m, 1)
+plt.scatter(X, y)
+model = LinearRegression()
+model.fit(X, y)
+model.score(X, y)
+predictions = model.predict(X)
+plt.scatter(X, predictions, c="r", linewidths=1,label="predictions")
 plt.show()

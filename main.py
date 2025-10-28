@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsClassifier
 
 """
 rdn_matrix = np.random.default_rng().uniform(low=0, high=100, size=(5, 5))
@@ -84,7 +85,7 @@ graph(datasets)
 # plt.show()
 
 # linear regression machine learning
-
+"""
 np.random.seed(0)
 m = 100
 X = np.linspace(0, 10, m).reshape(m, 1)
@@ -95,4 +96,21 @@ model.fit(X, y)
 model.score(X, y)
 predictions = model.predict(X)
 plt.scatter(X, predictions, c="r", linewidths=1,label="predictions")
-plt.show()
+# plt.show()
+"""
+
+# machine learning - survie
+
+model = KNeighborsClassifier()
+titanic = sns.load_dataset("titanic").dropna(axis=0)
+titanic["sex"] = titanic["sex"].map({"male": 0, "female": 1})
+y = titanic["survived"]
+X = titanic[["pclass", "sex", "age"]]
+model.fit(X, y)
+
+def survie(model, pclass=3, sex=1, age=20):
+    x = pd.DataFrame([[pclass, sex, age]], columns=["pclass", "sex", "age"])
+    print(model.predict(x))
+    print(model.predict_proba(x))
+
+survie(model)
